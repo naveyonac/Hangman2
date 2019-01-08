@@ -1,0 +1,17 @@
+.key {
+  border: solid 1px white;
+  display: inline;
+  font-size: 20px;
+  padding: 5px;
+  margin: 5px;
+  color: white;
+  background-color: black;
+}
+
+h1 {
+  color: White;
+}
+
+body {
+  background-color: Black;
+}
