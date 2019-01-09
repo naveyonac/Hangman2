@@ -135,12 +135,18 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var keyBoard = document.querySelector('.keyboard');
 var keyboardKeys = document.querySelectorAll('.key');
 var startButton = document.querySelector('.startGame');
+var slots = document.querySelector('.blankSpots');
+var blankCharacter = document.createTextNode('_');
 startButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   var word = prompt('Enter in a word for other player to guess.');
   var wordSplit = word.split('');
-  console.log(wordSplit);
-  2;
+  console.log(wordSplit); //wanting to go through a loop to make a "_" for each letter in the word
+
+  for (i = 0; i < word.length; i++) {
+    // letter = word.charAt[i]
+    slots.appendChild(blankCharacter);
+  }
 });
 },{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -169,7 +175,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54976" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59864" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -31,6 +31,8 @@
 let keyBoard = document.querySelector('.keyboard')
 let keyboardKeys = document.querySelectorAll('.key')
 let startButton = document.querySelector('.startGame')
+let slots = document.querySelector('.blankSpots')
+let blankCharacter = document.createTextNode('_')
 
 startButton.addEventListener('click', function(evt) {
     evt.preventDefault()
@@ -38,4 +40,10 @@ startButton.addEventListener('click', function(evt) {
     let wordSplit = word.split('')
     console.log(wordSplit)
 
-2})
+    //wanting to go through a loop to make a "_" for each letter in the word
+for (i=0;i<word.length;i++) {
+    // letter = word.charAt[i]
+    slots.appendChild(blankCharacter)
+}
+
+})
