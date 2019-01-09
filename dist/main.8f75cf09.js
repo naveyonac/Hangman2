@@ -105,7 +105,23 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"../js/main.js":[function(require,module,exports) {
+var key = document.querySelectorAll('.key');
+var button = document.querySelector('.startGame');
+var word;
+var wordArray;
+button.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  var wordInput = prompt('Pick a word for player 2 to guess!');
+  console.log(wordInput); // evt.stopImmediatePropagation() //stops the prompt form popping up a million times.
+  // word = wordInput
+}); //this will get the word from player one to use.
 
+for (i = 0; i < 26; i++) {
+  key[i].addEventListener('click', function (evt) {
+    evt.stopImmediatePropagation();
+    alert('Key Was Clicked!');
+  });
+} //adds event listeners to all of the keyboard keys for input selection
 },{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -276,3 +292,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","../js/main.js"], null)
+//# sourceMappingURL=/main.8f75cf09.map
