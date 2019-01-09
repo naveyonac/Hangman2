@@ -105,23 +105,43 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"../js/main.js":[function(require,module,exports) {
-var key = document.querySelectorAll('.key');
-var button = document.querySelector('.startGame');
-var word;
-var wordArray;
-button.addEventListener('click', function (evt) {
+// const key = document.querySelectorAll('.key')
+// const button = document.querySelector('.startGame')
+// var word
+// var wordArray
+// button.addEventListener('click', startGameFunction(evt))
+//     // evt.preventDefault()
+//     // let wordInput = prompt('Pick a word for player 2 to guess!')
+//     // console.log(wordInput)
+//     // evt.stopImmediatePropagation() //stops the prompt form popping up a million times.
+//     // word = wordInput
+// // }) //this will get the word from player one to use.
+// // for (i=0;i < 26; i++) {
+// //     key[i].addEventListener('click', function(evt){
+// //         evt.stopImmediatePropagation()
+// //         alert('Key Was Clicked!')
+// //     })} 
+// //adds event listeners to all of the keyboard keys for input selection
+// function startGameFunction() {
+//     evt.preventDefault()
+//     let wordInput = prompt('Pick a word for player 2 to guess!')
+//     console.log(wordInput)
+// }
+// while (i=0; i < 26; i++) {
+//     key[i].addEventListener('click', function(){
+//         alert('Key Was Clicked!')
+//     }
+// }
+var keyBoard = document.querySelector('.keyboard');
+var keyboardKeys = document.querySelectorAll('.key');
+var startButton = document.querySelector('.startGame');
+startButton.addEventListener('click', function (evt) {
   evt.preventDefault();
-  var wordInput = prompt('Pick a word for player 2 to guess!');
-  console.log(wordInput); // evt.stopImmediatePropagation() //stops the prompt form popping up a million times.
-  // word = wordInput
-}); //this will get the word from player one to use.
-
-for (i = 0; i < 26; i++) {
-  key[i].addEventListener('click', function (evt) {
-    evt.stopImmediatePropagation();
-    alert('Key Was Clicked!');
-  });
-} //adds event listeners to all of the keyboard keys for input selection
+  var word = prompt('Enter in a word for other player to guess.');
+  var wordSplit = word.split('');
+  console.log(wordSplit);
+  2;
+});
 },{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
