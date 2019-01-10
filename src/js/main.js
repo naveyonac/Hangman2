@@ -33,6 +33,8 @@ let keyboardKeys = document.querySelectorAll('.key')
 let startButton = document.querySelector('.startGame')
 let slots = document.querySelector('.blankSpots')
 let blankCharacter = []
+let wrongGuesses = 1
+const image = document.querySelector('.manImage').src
 
 startButton.addEventListener('click', function(evt) {
     evt.preventDefault()
@@ -56,13 +58,39 @@ for (i=0;i<wordSplit.length;i++) {
     //appends the new div to the .blankSpots node
 }
 
+changeImages(wrongGuesses)
+addKeyboardListeners()
+// console.log(image)
+})
 
-for (j=0;j<26;j++) {
-    keyboardKeys[j].addEventListener('click', function() {
-        alert('clicked!')
-    })
+function addKeyboardListeners() {
+    for (j=0;j<26;j++) {
+        keyboardKeys[j].addEventListener('click', function() {
+            console.log(keyboardKeys.innerHTML)
+        })
+    }
 }
 
-
-
-})
+function changeImages(wrongGuesses) {
+    if (wrongGuesses === 0) {
+        document.querySelector('.manImage').src = 'http://localhost:59859/img1.97b391c3.png'
+    }
+    else if (wrongGuesses === 1) {
+        document.querySelector('.manImage').src = 'http://localhost:59859/img2.c13fb1c1.png'
+    }
+    else if (wrongGuesses === 2) {
+        document.querySelector('.manImage').src='http://localhost:59859/img3.c54a28a8.png'
+    }
+    else if (wrongGuesses === 3) {
+        document.querySelector('.manImage').src='http://localhost:59859/img4.dd0d453f.png'
+    }
+    else if (wrongGuesses === 4) {
+        document.querySelector('.manImage').src='http://localhost:59859/img5.9002a70c.png'
+    }
+    else if (wrongGuesses === 5) {
+        document.querySelector('.manImage').src='http://localhost:59859/img6.dfab2afd.png'
+    }
+    else {
+        document.querySelector('.manImage').src='http://localhost:59859/img7.97683ac8.png'
+    }
+}

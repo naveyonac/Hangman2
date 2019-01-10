@@ -137,6 +137,8 @@ var keyboardKeys = document.querySelectorAll('.key');
 var startButton = document.querySelector('.startGame');
 var slots = document.querySelector('.blankSpots');
 var blankCharacter = [];
+var wrongGuesses = 1;
+var image = document.querySelector('.manImage').src;
 startButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   var word = prompt('Enter in a word for other player to guess.');
@@ -157,12 +159,35 @@ startButton.addEventListener('click', function (evt) {
     slots.appendChild(newDiv); //appends the new div to the .blankSpots node
   }
 
+  changeImages(wrongGuesses);
+  addKeyboardListeners(); // console.log(image)
+});
+
+function addKeyboardListeners() {
   for (j = 0; j < 26; j++) {
     keyboardKeys[j].addEventListener('click', function () {
-      alert('clicked!');
+      console.log(keyboardKeys.innerHTML);
     });
   }
-});
+}
+
+function changeImages(wrongGuesses) {
+  if (wrongGuesses === 0) {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img1.97b391c3.png';
+  } else if (wrongGuesses === 1) {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img2.c13fb1c1.png';
+  } else if (wrongGuesses === 2) {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img3.c54a28a8.png';
+  } else if (wrongGuesses === 3) {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img4.dd0d453f.png';
+  } else if (wrongGuesses === 4) {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img5.9002a70c.png';
+  } else if (wrongGuesses === 5) {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img6.dfab2afd.png';
+  } else {
+    document.querySelector('.manImage').src = 'http://localhost:59859/img7.97683ac8.png';
+  }
+}
 },{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
