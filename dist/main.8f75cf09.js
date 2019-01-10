@@ -136,16 +136,31 @@ var keyBoard = document.querySelector('.keyboard');
 var keyboardKeys = document.querySelectorAll('.key');
 var startButton = document.querySelector('.startGame');
 var slots = document.querySelector('.blankSpots');
-var blankCharacter = document.createTextNode('_');
+var blankCharacter = [];
 startButton.addEventListener('click', function (evt) {
   evt.preventDefault();
   var word = prompt('Enter in a word for other player to guess.');
   var wordSplit = word.split('');
   console.log(wordSplit); //wanting to go through a loop to make a "_" for each letter in the word
 
-  for (i = 0; i < word.length; i++) {
+  for (i = 0; i < wordSplit.length; i++) {
     // letter = word.charAt[i]
-    slots.appendChild(blankCharacter);
+    // slots.className = slotDiv
+    // slots.appendChild(blankCharacter)
+    // document.querySelector('.blankSpots').appendChild(slots)
+    // blankCharacter.push('_')
+    // slots.appendChild(blankCharacter)
+    // idea above not working, trying new method.
+    var newDiv = document.createElement('div'); //makes a new div class for each letter in the word
+
+    newDiv.classList.add('blanksToFill');
+    slots.appendChild(newDiv); //appends the new div to the .blankSpots node
+  }
+
+  for (j = 0; j < 26; j++) {
+    keyboardKeys[j].addEventListener('click', function () {
+      alert('clicked!');
+    });
   }
 });
 },{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -175,7 +190,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59864" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54976" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

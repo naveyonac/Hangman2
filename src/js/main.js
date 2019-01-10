@@ -32,7 +32,7 @@ let keyBoard = document.querySelector('.keyboard')
 let keyboardKeys = document.querySelectorAll('.key')
 let startButton = document.querySelector('.startGame')
 let slots = document.querySelector('.blankSpots')
-let blankCharacter = document.createTextNode('_')
+let blankCharacter = []
 
 startButton.addEventListener('click', function(evt) {
     evt.preventDefault()
@@ -41,9 +41,28 @@ startButton.addEventListener('click', function(evt) {
     console.log(wordSplit)
 
     //wanting to go through a loop to make a "_" for each letter in the word
-for (i=0;i<word.length;i++) {
+for (i=0;i<wordSplit.length;i++) {
     // letter = word.charAt[i]
-    slots.appendChild(blankCharacter)
+    // slots.className = slotDiv
+    // slots.appendChild(blankCharacter)
+    // document.querySelector('.blankSpots').appendChild(slots)
+    // blankCharacter.push('_')
+    // slots.appendChild(blankCharacter)
+    // idea above not working, trying new method.
+    let newDiv = document.createElement('div')
+    //makes a new div class for each letter in the word
+    newDiv.classList.add('blanksToFill')
+    slots.appendChild(newDiv)
+    //appends the new div to the .blankSpots node
 }
+
+
+for (j=0;j<26;j++) {
+    keyboardKeys[j].addEventListener('click', function() {
+        alert('clicked!')
+    })
+}
+
+
 
 })

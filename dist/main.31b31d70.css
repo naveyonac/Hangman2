@@ -22,3 +22,20 @@ body {
   align-content: center;
   border-radius: 15%;
 }
+
+.slotDiv {
+  border-bottom: 1px solid white;
+  width: 15px;
+}
+
+.blankSpots {
+  color: white;
+}
+
+.blanksToFill {
+  border-bottom: solid 1px white;
+  width: 30px;
+  padding: 15px;
+  display: inline;
+  margin-left: 25px;
+}
