@@ -137,7 +137,7 @@ var keyboardKeys = document.querySelectorAll('.key');
 var startButton = document.querySelector('.startGame');
 var slots = document.querySelector('.blankSpots');
 var blankCharacter = [];
-var wrongGuesses = 1;
+var wrongGuesses = 0;
 var image = document.querySelector('.manImage').src;
 startButton.addEventListener('click', function (evt) {
   evt.preventDefault();
@@ -160,13 +160,16 @@ startButton.addEventListener('click', function (evt) {
   }
 
   changeImages(wrongGuesses);
-  addKeyboardListeners(); // console.log(image)
+  addKeyboardListeners(wordSplit); // console.log(image)
 });
 
-function addKeyboardListeners() {
+function addKeyboardListeners(wordSplit) {
   for (j = 0; j < 26; j++) {
     keyboardKeys[j].addEventListener('click', function () {
-      console.log(keyboardKeys.innerHTML);
+      var target = event.target.innerText;
+      console.log(target);
+      var check = wordSplit.indexOf(target);
+      console.log(check);
     });
   }
 }
@@ -215,7 +218,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54976" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59864" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
