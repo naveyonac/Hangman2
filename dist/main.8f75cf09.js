@@ -159,17 +159,27 @@ startButton.addEventListener('click', function (evt) {
     slots.appendChild(newDiv); //appends the new div to the .blankSpots node
   }
 
-  changeImages(wrongGuesses);
   addKeyboardListeners(wordSplit); // console.log(image)
 });
 
 function addKeyboardListeners(wordSplit) {
   for (j = 0; j < 26; j++) {
     keyboardKeys[j].addEventListener('click', function () {
-      var target = event.target.innerText;
+      var target = event.target.innerText; //this will get the letter that was clicked
+
       console.log(target);
-      var check = wordSplit.indexOf(target);
+      var check = wordSplit.indexOf(target); //this will check to see if the letter is an indicie of the array. if not, it will return a value of -1
+
       console.log(check);
+
+      if (check < 0) {
+        wrongGuesses++;
+        changeImages(wrongGuesses); //this will increment the images to the next one if they guess a letter wrong.
+      } //going to push the letter they selected to the blanksToFill div if it IS in the word selected.
+      else {
+          document.querySelectorAll('.blanksToFill')[check].innerHTML = target; // console.log(test[check])
+          // showLetters(wordSplit)
+        }
     });
   }
 }
@@ -189,8 +199,17 @@ function changeImages(wrongGuesses) {
     document.querySelector('.manImage').src = 'http://localhost:59859/img6.dfab2afd.png';
   } else {
     document.querySelector('.manImage').src = 'http://localhost:59859/img7.97683ac8.png';
+    document.querySelector('.message').innerHTML = "Game Over, You Lose!"; //once the last image is shown, this message will pop up.
   }
-}
+} // function showLetters() {
+//     let q = 0
+//     while (q < wordSplit.length) {
+//         let l = wordSplit.charAt(q)
+//         let cont = document.getElementsByClassName('.blankSpots')[0]
+//         cont.getElementsByClassName('.blanksToFill')[q].innerHTML = l
+//         q++
+//     }
+// }
 },{}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -218,7 +237,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59864" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54976" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

@@ -58,7 +58,6 @@ for (i=0;i<wordSplit.length;i++) {
     //appends the new div to the .blankSpots node
 }
 
-changeImages(wrongGuesses)
 addKeyboardListeners(wordSplit)
 // console.log(image)
 })
@@ -66,13 +65,25 @@ addKeyboardListeners(wordSplit)
 function addKeyboardListeners(wordSplit) {
     for (j=0;j<26;j++) {
         keyboardKeys[j].addEventListener('click', function() {
-            let target = event.target.innerText
+            let target = event.target.innerText //this will get the letter that was clicked
             console.log(target)
-            let check = wordSplit.indexOf(target)
+            let check = wordSplit.indexOf(target) //this will check to see if the letter is an indicie of the array. if not, it will return a value of -1
             console.log(check)
-        })
+
+                if (check < 0) {
+                    wrongGuesses++
+                    changeImages(wrongGuesses)//this will increment the images to the next one if they guess a letter wrong.
+                }
+                //going to push the letter they selected to the blanksToFill div if it IS in the word selected.
+                else  {
+                    document.querySelectorAll('.blanksToFill')[check].innerHTML = target
+                    // console.log(test[check])
+                    // showLetters(wordSplit)
+                }
+            })
     }
 }
+
 
 function changeImages(wrongGuesses) {
     if (wrongGuesses === 0) {
@@ -95,5 +106,17 @@ function changeImages(wrongGuesses) {
     }
     else {
         document.querySelector('.manImage').src = 'http://localhost:59859/img7.97683ac8.png'
+        document.querySelector('.message').innerHTML = "Game Over, You Lose!" //once the last image is shown, this message will pop up.
     }
 }
+
+
+// function showLetters() {
+//     let q = 0
+//     while (q < wordSplit.length) {
+//         let l = wordSplit.charAt(q)
+//         let cont = document.getElementsByClassName('.blankSpots')[0]
+//         cont.getElementsByClassName('.blanksToFill')[q].innerHTML = l
+//         q++
+//     }
+// }
