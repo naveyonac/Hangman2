@@ -135,6 +135,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 var keyBoard = document.querySelector('.keyboard');
 var keyboardKeys = document.querySelectorAll('.key');
 var startButton = document.querySelector('.startGame');
+var resetButton = document.querySelector('.resetGame');
 var slots = document.querySelector('.blankSpots');
 var blankCharacter = [];
 var wrongGuesses = 0;
@@ -201,7 +202,11 @@ function changeImages(wrongGuesses) {
     document.querySelector('.manImage').src = 'http://localhost:59859/img7.97683ac8.png';
     document.querySelector('.message').innerHTML = "Game Over, You Lose!"; //once the last image is shown, this message will pop up.
   }
-} // function showLetters() {
+}
+
+resetButton.addEventListener('click', function () {
+  location.reload();
+}); // function showLetters() {
 //     let q = 0
 //     while (q < wordSplit.length) {
 //         let l = wordSplit.charAt(q)

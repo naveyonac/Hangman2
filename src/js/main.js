@@ -31,6 +31,7 @@
 let keyBoard = document.querySelector('.keyboard')
 let keyboardKeys = document.querySelectorAll('.key')
 let startButton = document.querySelector('.startGame')
+let resetButton = document.querySelector('.resetGame')
 let slots = document.querySelector('.blankSpots')
 let blankCharacter = []
 let wrongGuesses = 0
@@ -109,6 +110,10 @@ function changeImages(wrongGuesses) {
         document.querySelector('.message').innerHTML = "Game Over, You Lose!" //once the last image is shown, this message will pop up.
     }
 }
+
+resetButton.addEventListener('click', function() {
+    location.reload()
+})
 
 
 // function showLetters() {
