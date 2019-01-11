@@ -14,10 +14,15 @@
 
 h1 {
     color: White;
+    font-family: vibur;
+    font-size: 30px;
 }
 
 body {
     background-color: Black;
+    text-align: center;
+    border: 1px solid white;
+    padding: 20px;
 }
 
 .manImage {
@@ -50,4 +55,19 @@ body {
     color:white;
     font-size: 25px;
     padding: 25px;
+}
+
+button {
+    padding:10px;
+    font-size: 20px;
+    margin:5px;
+    margin-bottom: -20px;
+}
+
+.letterContainer {
+    color: white;
+}
+
+h3 {
+    color:white;
 }

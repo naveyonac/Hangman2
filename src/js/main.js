@@ -34,6 +34,8 @@ let startButton = document.querySelector('.startGame')
 let resetButton = document.querySelector('.resetGame')
 let slots = document.querySelector('.blankSpots')
 let blankCharacter = []
+let correctChoices = [] //array will hold correct letters
+let wrongChoices = [] //gonna use this array to hold all the letters they use that are incorrect
 let wrongGuesses = 0
 const image = document.querySelector('.manImage').src
 
@@ -51,6 +53,8 @@ for (i=0;i<wordSplit.length;i++) {
     // document.querySelector('.blankSpots').appendChild(slots)
     // blankCharacter.push('_')
     // slots.appendChild(blankCharacter)
+
+
     // idea above not working, trying new method.
     let newDiv = document.createElement('div')
     //makes a new div class for each letter in the word
@@ -60,6 +64,9 @@ for (i=0;i<wordSplit.length;i++) {
 }
 
 addKeyboardListeners(wordSplit)
+if (correctChoices.length === wordSplit.length) {
+    document.querySelector('.message').innerHTML = "You Win! Congragulations!"
+}
 // console.log(image)
 })
 
@@ -73,11 +80,14 @@ function addKeyboardListeners(wordSplit) {
 
                 if (check < 0) {
                     wrongGuesses++
+                    wrongChoices.push(target)
+                    document.querySelector('.letterContainer').innerHTML = wrongChoices
                     changeImages(wrongGuesses)//this will increment the images to the next one if they guess a letter wrong.
                 }
                 //going to push the letter they selected to the blanksToFill div if it IS in the word selected.
                 else  {
                     document.querySelectorAll('.blanksToFill')[check].innerHTML = target
+                    correctChoices.push(target)// this keeps an array of letters that correlate with word
                     // console.log(test[check])
                     // showLetters(wordSplit)
                 }

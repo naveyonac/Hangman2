@@ -138,6 +138,10 @@ var startButton = document.querySelector('.startGame');
 var resetButton = document.querySelector('.resetGame');
 var slots = document.querySelector('.blankSpots');
 var blankCharacter = [];
+var correctChoices = []; //array will hold correct letters
+
+var wrongChoices = []; //gonna use this array to hold all the letters they use that are incorrect
+
 var wrongGuesses = 0;
 var image = document.querySelector('.manImage').src;
 startButton.addEventListener('click', function (evt) {
@@ -160,7 +164,12 @@ startButton.addEventListener('click', function (evt) {
     slots.appendChild(newDiv); //appends the new div to the .blankSpots node
   }
 
-  addKeyboardListeners(wordSplit); // console.log(image)
+  addKeyboardListeners(wordSplit);
+
+  if (correctChoices.length === wordSplit.length) {
+    document.querySelector('.message').innerHTML = "You Win! Congragulations!";
+  } // console.log(image)
+
 });
 
 function addKeyboardListeners(wordSplit) {
@@ -175,10 +184,14 @@ function addKeyboardListeners(wordSplit) {
 
       if (check < 0) {
         wrongGuesses++;
+        wrongChoices.push(target);
+        document.querySelector('.letterContainer').innerHTML = wrongChoices;
         changeImages(wrongGuesses); //this will increment the images to the next one if they guess a letter wrong.
       } //going to push the letter they selected to the blanksToFill div if it IS in the word selected.
       else {
-          document.querySelectorAll('.blanksToFill')[check].innerHTML = target; // console.log(test[check])
+          document.querySelectorAll('.blanksToFill')[check].innerHTML = target;
+          correctChoices.push(target); // this keeps an array of letters that correlate with word
+          // console.log(test[check])
           // showLetters(wordSplit)
         }
     });
