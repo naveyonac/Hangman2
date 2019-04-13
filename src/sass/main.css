@@ -1,0 +1,76 @@
+/* // .keyboard {
+//     border: solid 1px black;
+// } */
+
+.key {
+    border: solid 1px white;
+    display: inline;
+    font-size: 20px;
+    padding: 5px;
+    margin: 5px;
+    color: white;
+    background-color: black;
+}
+
+h1 {
+    color: White;
+    font-family: vibur;
+    font-size: 50px;
+    margin-top: 0;
+}
+
+body {
+    background-color: Black;
+    text-align: center;
+    border: 1px solid white;
+    padding: 20px;
+}
+
+.manImage {
+    max-width: 400px;
+    max-height: 400px;
+    align-content: center;
+    border-radius: 15%;
+}
+
+.slotDiv {
+    color:white;
+    border-bottom: 1px solid white;
+    width: 15px;
+}
+
+.blankSpots {
+    color: white;
+    padding-bottom: 20px;
+}
+
+.blanksToFill {
+    border-bottom: solid 1px white;
+    /* width: 30px; */
+    padding: 15px;
+    display:inline;
+    margin-left: 25px;
+}
+
+.message {
+    color:white;
+    font-size: 25px;
+    padding: 25px;
+}
+
+button {
+    padding:10px;
+    font-size: 20px;
+    margin:5px;
+    margin-bottom: -20px;
+    color: black;
+    border-radius: 25%;
+}
+
+.letterContainer {
+    color: white;
+}
+
+h3 {
+    color:white;
+}
