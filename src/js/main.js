@@ -5,6 +5,7 @@ let startButton = document.querySelector('.startGame')
 let resetButton = document.querySelector('.resetGame')
 let slots = document.querySelector('.blankSpots')
 let blankCharacter = []
+let word = ''
 let correctChoices = [] //array will hold correct letters
 let wrongChoices = [] //gonna use this array to hold all the letters they use that are incorrect
 let wrongGuesses = 0
@@ -29,9 +30,10 @@ for (i=0;i<wordSplit.length;i++) {
 
     //appends the new div to the .blankSpots node
     slots.appendChild(newDiv)
+
+    addKeyboardListeners(wordSplit)
 }
 
-addKeyboardListeners(wordSplit)
 
 
 if (correctChoices.length === wordSplit.length) {
@@ -49,8 +51,9 @@ function addKeyboardListeners(wordSplit) {
 
 
             // want to take wordSplit which is the array containing each of the letters and go through(map?) and see if the letters are the same. maybe default the letters to lowercase?
-
+            // let newCheck = wordSplit.map()
             
+
             let check = wordSplit.indexOf(target) //this will check to see if the letter is an indicie of the array. if not, it will return a value of -1
             console.log(check)
 
@@ -70,6 +73,8 @@ function addKeyboardListeners(wordSplit) {
             })
     }
 }
+
+
 
 
 function changeImages(wrongGuesses) {
