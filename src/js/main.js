@@ -18,23 +18,22 @@ startButton.addEventListener('click', function(evt) {
 
     //wanting to go through a loop to make a "_" for each letter in the word
 for (i=0;i<wordSplit.length;i++) {
-    // letter = word.charAt[i]
-    // slots.className = slotDiv
-    // slots.appendChild(blankCharacter)
-    // document.querySelector('.blankSpots').appendChild(slots)
-    // blankCharacter.push('_')
-    // slots.appendChild(blankCharacter)
-
 
     // idea above not working, trying new method.
+
     let newDiv = document.createElement('div')
+
     //makes a new div class for each letter in the word
     newDiv.classList.add('blanksToFill')
-    slots.appendChild(newDiv)
+
+
     //appends the new div to the .blankSpots node
+    slots.appendChild(newDiv)
 }
 
 addKeyboardListeners(wordSplit)
+
+
 if (correctChoices.length === wordSplit.length) {
     document.querySelector('.message').innerHTML = "You Win! Congragulations!"
 }
@@ -46,6 +45,12 @@ function addKeyboardListeners(wordSplit) {
         keyboardKeys[j].addEventListener('click', function() {
             let target = event.target.innerText //this will get the letter that was clicked
             console.log(target)
+
+
+
+            // want to take wordSplit which is the array containing each of the letters and go through(map?) and see if the letters are the same. maybe default the letters to lowercase?
+
+            
             let check = wordSplit.indexOf(target) //this will check to see if the letter is an indicie of the array. if not, it will return a value of -1
             console.log(check)
 
