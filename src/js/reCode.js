@@ -34,21 +34,61 @@ function startGame(evt) {
         newDiv.classList.add('blanksToFill')
         slots.appendChild(newDiv)
     }
-    addKeyListeners()
+    addKeyListeners(wordSplit)
     // checkAnswers()
 }
 
 //adds listener on each of the keyboard inputs
-function addKeyListeners() {
+function addKeyListeners(wordSplit) {
     for(i=0;i<26;i++) {
         keyboardKeys[i].addEventListener('click', function() {
             let keyLetter = event.target.innerHTML
             console.log(keyLetter)
+            checkAnswers(keyLetter, wordSplit)
         })
     }
     //for each letter clicked, we want to check if it's a letter in the wordSplit array.
 }
 
-function checkAnswers() {
-    
+function checkAnswers(keyLetter, wordSplit) {
+    //loop through all the indicies and see if the keyLetter matches the inner HTML text
+    let check = wordSplit.indexOf(keyLetter)
+    console.log(check)
+    if (check < 0) {
+        wrongGuesses++
+        wrongChoices.push(keyLetter)
+        document.querySelector('.letterContainer').innerHTML = wrongChoices
+    }
+    else null 
+
+    // for (j=0; j<wordSplit.length;j++) {
+    //     if (wordSplit[j] = keyLetter) {
+    //         correctChoices.push(keyLetter)
+    //     }
+    // }
+}
+
+function changeImages(wrongGuesses) {
+    if (wrongGuesses === 0) {
+        document.querySelector('.manImage').src = 'src/img/img1.png'
+    }
+    else if (wrongGuesses === 1) {
+        document.querySelector('.manImage').src = 'src/img/img2.png'
+    }
+    else if (wrongGuesses === 2) {
+        document.querySelector('.manImage').src = 'src/img/img3.png'
+    }
+    else if (wrongGuesses === 3) {
+        document.querySelector('.manImage').src = 'src/img/img4.png'
+    }
+    else if (wrongGuesses === 4) {
+        document.querySelector('.manImage').src = 'src/img/img5.png'
+    }
+    else if (wrongGuesses === 5) {
+        document.querySelector('.manImage').src = 'src/img/img6.png'
+    }
+    else {
+        document.querySelector('.manImage').src = 'src/img/img7.png'
+        document.querySelector('.message').innerHTML = "Game Over, You Lose!" //once the last image is shown, this message will pop up.
+    }
 }
