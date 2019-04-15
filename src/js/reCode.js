@@ -58,8 +58,15 @@ function checkAnswers(keyLetter, wordSplit) {
         wrongGuesses++
         wrongChoices.push(keyLetter)
         document.querySelector('.letterContainer').innerHTML = wrongChoices
+        changeImages(wrongGuesses)
     }
-    else null 
+    else {
+        for (j=0; j<wordSplit.length;j++) {
+            if (wordSplit[j] = keyLetter) {
+                correctChoices.push(keyLetter)
+            }
+        }
+    }
 
     // for (j=0; j<wordSplit.length;j++) {
     //     if (wordSplit[j] = keyLetter) {
