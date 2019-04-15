@@ -11,6 +11,8 @@ let wrongChoices = [] //gonna use this array to hold all the letters they use th
 let wrongGuesses = 0
 const image = document.querySelector('.manImage').src
 
+
+
 //initializes board and runs game
 startButton.addEventListener('click', startGame)
 
@@ -25,7 +27,7 @@ function startGame(evt) {
     evt.preventDefault()
     let initialWord = prompt('Enter a word for player two to guess.. Make sure they do not see the word!')
     let word = initialWord.toLowerCase()
-    console.log(word)
+    // console.log(word)
 
     let wordSplit = word.split('')
     //adds '_' for each letter in player selected word
@@ -43,30 +45,66 @@ function addKeyListeners(wordSplit) {
     for(i=0;i<26;i++) {
         keyboardKeys[i].addEventListener('click', function() {
             let keyLetter = event.target.innerHTML
-            console.log(keyLetter)
+            // console.log(keyLetter)
             checkAnswers(keyLetter, wordSplit)
         })
     }
-    //for each letter clicked, we want to check if it's a letter in the wordSplit array.
 }
 
 function checkAnswers(keyLetter, wordSplit) {
+    //first check to make sure the selected letter has not already been selected
+    checkLetter(keyLetter, wordSplit)
+
+    // //loop through all the indicies and see if the keyLetter matches the inner HTML text
+    // let check = wordSplit.indexOf(keyLetter)
+    // // console.log(check)
+    // if (check < 0) {
+    //     wrongGuesses++
+    //     wrongChoices.push(keyLetter)
+    //     document.querySelector('.letterContainer').innerHTML = wrongChoices
+    //     changeImages(wrongGuesses)
+    // }
+    // else null
+    // //     {
+    // //     for (j=0; j<wordSplit.length;j++) {
+    // //         if (wordSplit[j] = keyLetter) {
+    // //             correctChoices.push(keyLetter)
+    // //             console.log()
+    // //         }
+    // //     }
+    // // }
+
+    // // for (j=0; j<wordSplit.length;j++) {
+    // //     if (wordSplit[j] = keyLetter) {
+    // //         correctChoices.push(keyLetter)
+    // //     }
+    // // }
+}
+
+function checkLetter(keyLetter, wordSplit) {
+    for (t=0;t<wrongChoices.length;t++) {
+        if (keyLetter === wrongChoices[t]) {
+            alert("Please pick a different letter")
+        }
+    }
     //loop through all the indicies and see if the keyLetter matches the inner HTML text
     let check = wordSplit.indexOf(keyLetter)
-    console.log(check)
+    // console.log(check)
     if (check < 0) {
         wrongGuesses++
         wrongChoices.push(keyLetter)
         document.querySelector('.letterContainer').innerHTML = wrongChoices
         changeImages(wrongGuesses)
     }
-    else {
-        for (j=0; j<wordSplit.length;j++) {
-            if (wordSplit[j] = keyLetter) {
-                correctChoices.push(keyLetter)
-            }
-        }
-    }
+    else null
+    //     {
+    //     for (j=0; j<wordSplit.length;j++) {
+    //         if (wordSplit[j] = keyLetter) {
+    //             correctChoices.push(keyLetter)
+    //             console.log()
+    //         }
+    //     }
+    // }
 
     // for (j=0; j<wordSplit.length;j++) {
     //     if (wordSplit[j] = keyLetter) {
