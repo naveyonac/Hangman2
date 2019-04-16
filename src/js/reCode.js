@@ -37,7 +37,6 @@ function startGame(evt) {
         slots.appendChild(newDiv)
     }
     addKeyListeners(wordSplit)
-    // checkAnswers()
 }
 
 //adds listener on each of the keyboard inputs
@@ -45,7 +44,7 @@ function addKeyListeners(wordSplit) {
     for(i=0;i<26;i++) {
         keyboardKeys[i].addEventListener('click', function() {
             let keyLetter = event.target.innerHTML
-            // console.log(keyLetter)
+            console.log(keyLetter)
             checkAnswers(keyLetter, wordSplit)
         })
     }
@@ -53,65 +52,63 @@ function addKeyListeners(wordSplit) {
 
 function checkAnswers(keyLetter, wordSplit) {
     //first check to make sure the selected letter has not already been selected
-    checkLetter(keyLetter, wordSplit)
+    checkLetter(keyLetter)
 
-    // //loop through all the indicies and see if the keyLetter matches the inner HTML text
-    // let check = wordSplit.indexOf(keyLetter)
-    // // console.log(check)
-    // if (check < 0) {
-    //     wrongGuesses++
-    //     wrongChoices.push(keyLetter)
-    //     document.querySelector('.letterContainer').innerHTML = wrongChoices
-    //     changeImages(wrongGuesses)
-    // }
-    // else null
-    // //     {
-    // //     for (j=0; j<wordSplit.length;j++) {
-    // //         if (wordSplit[j] = keyLetter) {
-    // //             correctChoices.push(keyLetter)
-    // //             console.log()
-    // //         }
-    // //     }
-    // // }
-
-    // // for (j=0; j<wordSplit.length;j++) {
-    // //     if (wordSplit[j] = keyLetter) {
-    // //         correctChoices.push(keyLetter)
-    // //     }
-    // // }
-}
-
-function checkLetter(keyLetter, wordSplit) {
-    for (t=0;t<wrongChoices.length;t++) {
-        if (keyLetter === wrongChoices[t]) {
-            alert("Please pick a different letter")
-        }
-    }
     //loop through all the indicies and see if the keyLetter matches the inner HTML text
     let check = wordSplit.indexOf(keyLetter)
     // console.log(check)
     if (check < 0) {
         wrongGuesses++
-        wrongChoices.push(keyLetter)
+        wrongChoices.push(keyLetter) 
         document.querySelector('.letterContainer').innerHTML = wrongChoices
         changeImages(wrongGuesses)
     }
-    else null
-    //     {
-    //     for (j=0; j<wordSplit.length;j++) {
-    //         if (wordSplit[j] = keyLetter) {
-    //             correctChoices.push(keyLetter)
-    //             console.log()
-    //         }
-    //     }
-    // }
-
-    // for (j=0; j<wordSplit.length;j++) {
-    //     if (wordSplit[j] = keyLetter) {
-    //         correctChoices.push(keyLetter)
-    //     }
-    // }
+    else {
+        for(p=0;p<wordSplit.length;p++) {
+            if (wordSplit[p] === keyLetter) {
+                console.log(p)
+            }
+            else null
+        }
+    }
 }
+
+function checkLetter(keyLetter) {
+    for (t=0;t<wrongChoices.length;t++) {
+        if (keyLetter === wrongChoices[t]) {
+            alert("Please pick a different letter")
+            let response = false
+            return response
+        }
+        else {}
+
+    }
+
+}
+// //loop through all the indicies and see if the keyLetter matches the inner HTML text
+// let check = wordSplit.indexOf(keyLetter)
+// // console.log(check)
+// if (check < 0) {
+//     wrongGuesses++
+//     wrongChoices.push(keyLetter)
+//     document.querySelector('.letterContainer').innerHTML = wrongChoices
+//     changeImages(wrongGuesses)
+// }
+// else null
+// //     {
+// //     for (j=0; j<wordSplit.length;j++) {
+// //         if (wordSplit[j] = keyLetter) {
+// //             correctChoices.push(keyLetter)
+// //             console.log()
+// //         }
+// //     }
+// // }
+
+// // for (j=0; j<wordSplit.length;j++) {
+// //     if (wordSplit[j] = keyLetter) {
+// //         correctChoices.push(keyLetter)
+// //     }
+// // }
 
 function changeImages(wrongGuesses) {
     if (wrongGuesses === 0) {
@@ -134,6 +131,7 @@ function changeImages(wrongGuesses) {
     }
     else {
         document.querySelector('.manImage').src = 'src/img/img7.png'
+
         document.querySelector('.message').innerHTML = "Game Over, You Lose!" //once the last image is shown, this message will pop up.
     }
 }
