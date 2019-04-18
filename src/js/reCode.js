@@ -67,8 +67,12 @@ function checkAnswers(keyLetter, wordSplit) {
         for(p=0;p<wordSplit.length;p++) {
             if (wordSplit[p] === keyLetter) {
                 console.log(p)
+                correctChoices.push(keyLetter)
             }
             else null
+        }
+        if (correctChoices.length === wordSplit.length) {
+            document.querySelector('.message').innerHTML = "You Win! Congragulations!"
         }
     }
 }
@@ -109,6 +113,10 @@ function checkLetter(keyLetter) {
 // //         correctChoices.push(keyLetter)
 // //     }
 // // }
+
+function compareAnswers() {
+
+}
 
 function changeImages(wrongGuesses) {
     if (wrongGuesses === 0) {
