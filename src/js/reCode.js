@@ -31,10 +31,12 @@ function startGame(evt) {
 
     let wordSplit = word.split('')
     //adds '_' for each letter in player selected word
-    for (i=0;i<wordSplit.length;i++) {
+    for (z=0;z<wordSplit.length;z++) {
         let newDiv = document.createElement('div')
         newDiv.classList.add('blanksToFill')
         slots.appendChild(newDiv)
+        newDiv.id = z
+        console.log(newDiv.id)
     }
     addKeyListeners(wordSplit)
 }
@@ -51,6 +53,7 @@ function addKeyListeners(wordSplit) {
 }
 
 function checkAnswers(keyLetter, wordSplit) {
+
     //first check to make sure the selected letter has not already been selected
     checkLetter(keyLetter)
 
@@ -68,13 +71,22 @@ function checkAnswers(keyLetter, wordSplit) {
             if (wordSplit[p] === keyLetter) {
                 console.log(p)
                 correctChoices.push(keyLetter)
+                console.log(correctChoices)
+                fillBlanks(p, keyLetter)
             }
             else null
         }
         if (correctChoices.length === wordSplit.length) {
-            document.querySelector('.message').innerHTML = "You Win! Congragulations!"
+            // document.querySelector('.message').innerHTML = "You Win! Congragulations!"
+            alert('Congratulations, you win!!')
         }
     }
+}
+
+function fillBlanks(p, keyLetter) {
+    let textNode = document.createTextNode(keyLetter)
+    let replaceBlank = document.getElementById(`${p}`)
+    replaceBlank.appendChild(textNode)
 }
 
 function checkLetter(keyLetter) {
@@ -114,9 +126,6 @@ function checkLetter(keyLetter) {
 // //     }
 // // }
 
-function compareAnswers() {
-
-}
 
 function changeImages(wrongGuesses) {
     if (wrongGuesses === 0) {
