@@ -29,9 +29,9 @@ soloButton.addEventListener('click', startSoloGame)
 function startSoloGame() {
     //start by getting a random word from the soloWords array 
     let ranLength = soloWords.length
-    console.log(ranLength)
+    // console.log(ranLength)
     let ranNum = Math.floor((Math.random() * ranLength) + 1)
-    console.log(ranNum)
+    // console.log(ranNum)
     let ranWord = soloWords[ranNum]
     console.log(ranWord)
     let lowCaseWord = ranWord.toLowerCase()
