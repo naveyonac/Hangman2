@@ -24,6 +24,7 @@ resetButton.addEventListener('click', function() {
 
 soloButton.addEventListener('click', startSoloGame)
 
+
 //will first pick a random word to guess, then runs the addKeyListeners function like normal
 function startSoloGame() {
     //start by getting a random word from the soloWords array 
@@ -33,6 +34,15 @@ function startSoloGame() {
     console.log(ranNum)
     let ranWord = soloWords[ranNum]
     console.log(ranWord)
+    let lowCaseWord = ranWord.toLowerCase()
+    let wordSplit = lowCaseWord.split('')
+    for (q=0;q<wordSplit.length;q++) {
+        let newDiv = document.createElement('div')
+        newDiv.classList.add('blanksToFill')
+        slots.appendChild(newDiv)
+        newDiv.id = q
+    }
+    addKeyListeners(wordSplit)
 }
 
 
