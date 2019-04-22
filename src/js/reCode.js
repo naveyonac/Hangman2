@@ -3,6 +3,7 @@ let keyBoard = document.querySelector('.keyboard')
 let keyboardKeys = document.querySelectorAll('.key')
 let startButton = document.querySelector('.startGame')
 let resetButton = document.querySelector('.resetGame')
+let soloButton = document.querySelector('.soloGame')
 let slots = document.querySelector('.blankSpots')
 let blankCharacter = []
 let word = ''
@@ -21,6 +22,19 @@ resetButton.addEventListener('click', function() {
     location.reload()
 })
 
+soloButton.addEventListener('click', startSoloGame)
+
+//will first pick a random word to guess, then runs the addKeyListeners function like normal
+function startSoloGame() {
+    //start by getting a random word from the soloWords array 
+    let ranLength = soloWords.length
+    console.log(ranLength)
+    let ranNum = Math.floor((Math.random() * ranLength) + 1)
+    console.log(ranNum)
+    let ranWord = soloWords[ranNum]
+    console.log(ranWord)
+}
+
 
 //takes player input for word
 function startGame(evt) {
@@ -36,7 +50,7 @@ function startGame(evt) {
         newDiv.classList.add('blanksToFill')
         slots.appendChild(newDiv)
         newDiv.id = z
-        console.log(newDiv.id)
+        // console.log(newDiv.id)
     }
     addKeyListeners(wordSplit)
 }
@@ -46,7 +60,7 @@ function addKeyListeners(wordSplit) {
     for(i=0;i<26;i++) {
         keyboardKeys[i].addEventListener('click', function() {
             let keyLetter = event.target.innerHTML
-            console.log(keyLetter)
+            // console.log(keyLetter)
             checkAnswers(keyLetter, wordSplit)
         })
     }
@@ -69,9 +83,9 @@ function checkAnswers(keyLetter, wordSplit) {
     else {
         for(p=0;p<wordSplit.length;p++) {
             if (wordSplit[p] === keyLetter) {
-                console.log(p)
+                // console.log(p)
                 correctChoices.push(keyLetter)
-                console.log(correctChoices)
+                // console.log(correctChoices)
                 fillBlanks(p, keyLetter)
             }
             else null
@@ -101,30 +115,6 @@ function checkLetter(keyLetter) {
     }
 
 }
-// //loop through all the indicies and see if the keyLetter matches the inner HTML text
-// let check = wordSplit.indexOf(keyLetter)
-// // console.log(check)
-// if (check < 0) {
-//     wrongGuesses++
-//     wrongChoices.push(keyLetter)
-//     document.querySelector('.letterContainer').innerHTML = wrongChoices
-//     changeImages(wrongGuesses)
-// }
-// else null
-// //     {
-// //     for (j=0; j<wordSplit.length;j++) {
-// //         if (wordSplit[j] = keyLetter) {
-// //             correctChoices.push(keyLetter)
-// //             console.log()
-// //         }
-// //     }
-// // }
-
-// // for (j=0; j<wordSplit.length;j++) {
-// //     if (wordSplit[j] = keyLetter) {
-// //         correctChoices.push(keyLetter)
-// //     }
-// // }
 
 
 function changeImages(wrongGuesses) {
