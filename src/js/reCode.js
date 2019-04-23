@@ -29,9 +29,7 @@ soloButton.addEventListener('click', startSoloGame)
 function startSoloGame() {
     //start by getting a random word from the soloWords array 
     let ranLength = soloWords.length
-    // console.log(ranLength)
     let ranNum = Math.floor((Math.random() * ranLength) + 1)
-    // console.log(ranNum)
     let ranWord = soloWords[ranNum]
     console.log(ranWord)
     let lowCaseWord = ranWord.toLowerCase()
@@ -51,7 +49,6 @@ function startGame(evt) {
     evt.preventDefault()
     let initialWord = prompt('Enter a word for player two to guess.. Make sure they do not see the word!')
     let word = initialWord.toLowerCase()
-    // console.log(word)
 
     let wordSplit = word.split('')
     //adds '_' for each letter in player selected word
@@ -60,7 +57,6 @@ function startGame(evt) {
         newDiv.classList.add('blanksToFill')
         slots.appendChild(newDiv)
         newDiv.id = z
-        // console.log(newDiv.id)
     }
     addKeyListeners(wordSplit)
 }
@@ -70,7 +66,6 @@ function addKeyListeners(wordSplit) {
     for(i=0;i<26;i++) {
         keyboardKeys[i].addEventListener('click', function() {
             let keyLetter = event.target.innerHTML
-            // console.log(keyLetter)
             checkAnswers(keyLetter, wordSplit)
         })
     }
@@ -83,7 +78,6 @@ function checkAnswers(keyLetter, wordSplit) {
 
     //loop through all the indicies and see if the keyLetter matches the inner HTML text
     let check = wordSplit.indexOf(keyLetter)
-    // console.log(check)
     if (check < 0) {
         wrongGuesses++
         wrongChoices.push(keyLetter) 
@@ -100,8 +94,6 @@ function checkAnswers(keyLetter, wordSplit) {
             }
             else null
         }
-        if (correctChoices.length === wordSplit.length) {
-            // document.querySelector('.message').innerHTML = "You Win! Congragulations!"
             alert('Congratulations, you win!!')
         }
     }
