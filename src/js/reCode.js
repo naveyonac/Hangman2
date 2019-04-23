@@ -93,9 +93,7 @@ function checkAnswers(keyLetter, wordSplit) {
     else {
         for(p=0;p<wordSplit.length;p++) {
             if (wordSplit[p] === keyLetter) {
-                // console.log(p)
                 correctChoices.push(keyLetter)
-                // console.log(correctChoices)
                 fillBlanks(p, keyLetter)
             }
             else null
